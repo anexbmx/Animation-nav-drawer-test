@@ -1,1317 +1,305 @@
-<!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ekoulya 4</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+        content="ie=edge">
+    <title>Responsive</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="assets/css/main.css"> -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/fonts/css/fontello.css">
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            flex-flow: row nowrap;
+        }
+
+        #drawer {
+            position: absolute;
+            top: 55px;
+            height: 100%;
+            width: 100%;
+            max-width: 250px;
+            transform: translateX(-250px);
+            transition: transform 0.3s ease;
+            background-color: #9e9e9e;
+            overflow: hidden;
+        }
+
+        main {
+            width: auto;
+            flex-grow: 1;
+        }
+
+        main header {
+            padding: 16px;
+            box-shadow: 3px -3px 6px 2px black;
+            background-color: #000;
+        }
+
+        main header nav:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        main header .list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        #logo {
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        #logo span {
+            color: #f44336;
+        }
+
+        .float-left {
+            float: left;
+        }
+
+        .float-right {
+            float: right;
+        }
+
+        ul.list li {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        ul.float-right li a {
+            color: #9e9e9e;
+            text-decoration: none;
+        }
+
+        ul.float-right li a:hover {
+            color: #f44336;
+        }
+
+        .hamburger {
+            display: none !important;
+        }
+
+        .hamburger .bar {
+            display: block;
+            height: 3px;
+            width: 20px;
+            margin: 3px 0;
+            background-color: white;
+            border-radius: 3px;
+            transition: transform 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        }
+
+        .hamburger.toggle .bar:first-of-type {
+            transform: rotate(135deg) translateX(2px);
+            width: 14px;
+        }
+
+        .hamburger.toggle .bar:nth-child(2) {
+            transform: rotate(-360deg);
+        }
+
+        .hamburger.toggle .bar:nth-child(3) {
+            transform: rotate(-135deg) translateX(2px);
+            width: 14px;
+        }
+
+
+        .container {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .container article {
+            border: 1px solid #ccc;
+            min-width: 300px;
+            margin: 10px auto;
+            box-shadow: 0 0 5px -2px #000;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container article img {
+            transition: transform 0.4s cubic-bezier(0.47, 0, 0.745, 0.715);
+        }
+
+        .container article h3 {
+            padding: 16px;
+            text-align: center;
+            background-color: black;
+            color: white;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            margin: 0;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.47, 0, 0.745, 0.715);
+        }
+
+        .container article:hover img {
+            transform: translateY(-50px);
+
+        }
+
+        .container article:hover h3 {
+            transform: translateY(0);
+        }
+
+        .img-fluid {
+            max-width: 300px;
+        }
+
+        figure {
+            margin: 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        @media screen and (max-width: 450px) {
+            header {
+                position: relative;
+            }
+
+            #drawer.open {
+                transform: translateX(0);
+                box-shadow: -1px 0px 6px 1px
+            }
+
+            #nav-md .float-right {
+                display: none;
+            }
+
+            .hamburger {
+                display: inline-block !important;
+            }
+
+            .float-left {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                float: none;
+            }
+        }
+    </style>
 
 </head>
 
 <body>
-    <!-- TopBar Social media -->
-    <div class="social-media pt-3 pb-0 d-none d-md-block" style="background: #000">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-7">
-                    <p class="text-white">
-                        Welcome to our corporate buisness
-                    </p>
-                </div>
-                <div class="col-sm-5">
-                    <div class="social-link__block text-right">
-                        <a href="#" class="facebook"><i class="icon-facebook"></i></a>
-                        <a href="#" class="twitter"><i class="icon-twitter"></i></a>
-                        <a href="#" class="google-plus"><i class="icon-gplus"></i></a>
-                        <a href="#" class="linkedin"><i class="icon-linkedin"></i></a>
+    <nav id="drawer"
+        class="">
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- NavBar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light  sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a data-target="about_us" class="pointer scroll-nav font-weight-bold nav-item nav-link ">A Propos De
-                        Nous
-                    </a>
-                    <a data-target="project-section" class="pointer scroll-nav font-weight-bold nav-item nav-link">Notre
-                        Vision
-                    </a>
-                    <a data-target="our-service" class="pointer scroll-nav font-weight-bold nav-item nav-link">Notre
-                        Service</a>
-                    <a data-target="our-mission" class="pointer scroll-nav font-weight-bold nav-item nav-link ">Notre
-                        Mission</a>
-                    <a data-target="our-testimonial" class="pointer scroll-nav font-weight-bold nav-item nav-link ">Our
-                        Testimonial</a>
-                    <a data-target="our-blog" class="pointer scroll-nav font-weight-bold nav-item nav-link ">Our
-                        Blog</a>
-                    <a data-target="inscription"
-                        class="pointer scroll-nav font-weight-bold nav-item nav-link text-success">Sign Up</a>
-                    <a href="/portal" data-target="inscription"
-                        class="pointer scroll-nav font-weight-bold nav-item nav-link text-warning">Sign In</a>
-                </div>
-            </div>
-        </div>
+        <ul class="list  ">
+            <li>
+                <a href="#">link1</a>
+            </li>
+            <li>
+                <a href="#">link2</a>
+            </li>
+            <li>
+                <a href="#">link3</a>
+            </li>
+            <li>
+                <a href="#">link4</a>
+            </li>
+        </ul>
     </nav>
 
-    <!-- Header -->
-    <header>
-        <div class="row m-0">
-            <div class="col-lg-3 col-md-12 d-flex justify-content-center bg-main">
-                <div class="logo">
-                    <a href="/"><img class="lazy" data-src="assets/images/logo.png" alt=""></a>
-                </div>
-            </div>
-            <div class="col-lg-9 col-md-12 ekoulya-info text-center text-lg-left">
-                <article class="p-3 p-lg-0 mr-lg-2">
-                    <i class="xicon icon-location"></i>
-                    <h3 class="color-main">13005 Greenvile Avenue</h3>
-                    <p>California, TX 70240</p>
-                </article>
-                <article class="p-3 p-lg-0 mr-lg-2">
-                    <i class="xicon icon-phone"></i>
-                    <h3 class="color-main">Call Us</h3>
-                    <p>+56 (0) 012 345 6789</p>
-                </article>
-                <article class="p-3 p-lg-0 mr-lg-2">
-                    <i class="xicon icon-mail"></i>
-                    <h3 class="color-main">Mail Us</h3>
-                    <p><a class="text-dark" href="mailto:info@gmail.com">info@gmail.com</a></p>
-                </article>
-            </div>
-        </div>
+    <main>
+        <header>
+            <nav id="nav-md">
+                <ul class="list float-left">
+                    <li class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </li>
+                    <li>
+                        <a id="logo"
+                            href="#">Ane<span>'</span>x <span>BM</span></a>
+                    </li>
+                </ul>
 
-        <!-- NavBar -->
-        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light  sticky-top">
+                <ul class="list float-right">
+                    <li>
+                        <a href="#">link1</a>
+                    </li>
+                    <li>
+                        <a href="#">link2</a>
+                    </li>
+                    <li>
+                        <a href="#">link3</a>
+                    </li>
+                    <li>
+                        <a href="#">link4</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section>
+            <h1 class="text-center">Black Clover</h1>
             <div class="container">
-                <a class="navbar-brand" href="#"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="font-weight-bold nav-item nav-link active" href="#">Home <span
-                                class="sr-only">(current)</span></a>
-                        <a class="font-weight-bold nav-item nav-link" href="#">Features</a>
-                        <a class="font-weight-bold nav-item nav-link" href="#">Pricing</a>
-                        <a class="font-weight-bold nav-item nav-link " href="#">Disabled</a>
-                        <a class="font-weight-bold nav-item nav-link " href="#">Disabled</a>
-                        <a class="font-weight-bold nav-item nav-link " href="#">Disabled</a>
-                        <a class="font-weight-bold nav-item nav-link " href="#">Disabled</a>
-                    </div>
-                </div>
-            </div>
-        </nav> -->
-        <!-- Carousel -->
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <!-- Slide One - Set the background image for this slide in the line below -->
-                <div class="carousel-item active" style="background-image: url('http://via.placeholder.com/1920x780')">
-                    <div class="carousel-caption d-none d-md-block text-left">
-                        <div class="content mr-auto">
-                            <h2 class="display-4 title-1">It's an Amazing Services!</h2>
-                            <h2 class="display-4 title-2">We Provide Best Mover & Packer Services</h2>
-                            <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry Lorem Ipsum has been the industry's standard dummy text ever.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Slide Two - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('http://via.placeholder.com/1920x780')">
-                    <div class="carousel-caption d-none d-md-block text-center">
-                        <div class="content m-auto">
-
-                            <h2 class="display-4 title-1">It's an Amazing Services!</h2>
-                            <h2 class="display-4 title-2">We Provide Best Mover & Packer Services</h2>
-                            <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry Lorem Ipsum has been the industry's standard dummy text ever.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Slide Three - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('http://via.placeholder.com/1920x780')">
-                    <div class="carousel-caption d-none d-md-block text-right">
-                        <div class="content ml-auto">
-
-                            <h4 class="display-4 title-1">It's an Amazing Services!</h4>
-                            <h2 class="display-4 title-2">We Provide Best Mover & Packer Services</h2>
-                            <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                                Lorem Ipsum has been the industry's standard dummy text ever.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-
-    </header>
-
-    <!-- section: About US -->
-    <section id="about_us" class="padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-5 about-left">
-                    <h4 class="text-secondary" style="font-size: 15px;">
-                        <i>QUI SOMME NOUS ?</i>
-                    </h4>
-                    <div class="sec_hedding text-left mb-30">
-                        <h2>A Propos De <span class="color-main font-weight-normal">Nous</span></h2>
-                        <span class="b-line  bg-main"></span>
-                    </div>
-                    <p>
-                        <b>Ekoulya</b> est une startup jeune et dynamique. Notre équipe est constituée de jeunes motivés
-                        et
-                        compétent. Nous sommes constamment à l’écoute des besoins de nos clients.
-                    </p>
-                    <p>
-                        Notre spécialité est de livrer vos colis d’une façon plus rapide et fluide. Nous avons un
-                        système de la livraison qui vous assure la traçabilité . </p>
-
-                </div>
-
-                <div class="col-md-12 col-lg-7  d-flex align-items-end">
-                    <div class="row">
-                        <div class="col-md-6 pic-show mt-30">
-                            <img class="lazy img-fluid" data-src="http://via.placeholder.com/310x210" alt="">
-                        </div>
-                        <div class="col-md-6 pic-show mt-30">
-                            <img class="lazy img-fluid" data-src="http://via.placeholder.com/310x210" alt="">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    <!-- section: project-section -->
-    <section id="project-section" class="">
-        <div class="row m-0 bg-main">
-            <div class="col-md-6 col-lg-4  pt-4 pb-5 pl-3 pr-3 ">
-                <div class="  sec_hedding text-left">
-                    <h2 class="text-light"><span class="font-weight-normal">Notre</span> Vision</h2>
-                    <span class="b-line m-left bg-light"></span>
-                </div>
-                <p class="lead text-light m-o">
-                    Notre vision et objectifs est d’être une référence et leader en distribution et livraison dans les
-                    années avenirs. En offrant une qualité de service supérieure à la celle de la concurrence. Ekoulya
-                    est une grande famille composée d’une équipe commerciale et administrative, et des coursiers
-                    compétent et professionnels disperser un peu partout dans le Maroc qui travaillent tous ensemble
-                    pour atteindre cette objectif commun. </p>
-                <p class="lead text-light m-0 d-none">
-                    Ekoulya est une grande famille composée d’une équipe commerciale et administrative, et des coursiers
-                    compétent et professionnels disperser un peu partout dans le Maroc qui travaillent tous ensemble
-                    pour atteindre cette objectif commun. </p>
-                <button class="btn btn-light btn-sm color-main  rounded">READ MORE</button>
-            </div>
-            <div class="col-md-6 col-lg-8 p-0">
-                <div class="owl-carousel owl-carousel-1 owl-theme">
-                    <div class="item">
-                        <figure class="m-0">
-                            <img class="lazy owl-lazy img-fluid border" data-src="http://via.placeholder.com/320x372" alt="">
-                            <figcaption>
-                                <p class="m-0 position-absolute font-weight-bold"><span class="color-main">AMEX</span>
-                                    BM</p>
-                                <a class="position-absolute bg-dark">When Goliath comes out, you should run.</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="item">
-                        <figure class="m-0">
-                            <img class="img-fluid border lazy owl-lazy" data-src="http://via.placeholder.com/320x372" alt="">
-                            <figcaption>
-                                <p class="m-0 position-absolute font-weight-bold"><span class="color-main">AMEX</span>
-                                    BM</p>
-                                <a class="position-absolute bg-dark">When Goliath comes out, you should run.</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="item">
-                        <figure class="m-0">
-                            <img class="img-fluid border lazy owl-lazy" data-src="http://via.placeholder.com/320x372" alt="">
-                            <figcaption>
-                                <p class="m-0 position-absolute font-weight-bold"><span class="color-main">AMEX</span>
-                                    BM</p>
-                                <a class="position-absolute bg-dark">When Goliath comes out, you should run.</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="item">
-                        <figure class="m-0">
-                            <img class="img-fluid border lazy owl-lazy" data-src="http://via.placeholder.com/320x372" alt="">
-                            <figcaption>
-                                <p class="m-0 position-absolute font-weight-bold"><span class="color-main">AMEX</span>
-                                    BM</p>
-                                <a class="position-absolute bg-dark">When Goliath comes out, you should run.</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="item">
-                        <figure class="m-0">
-                            <img class="img-fluid border lazy owl-lazy" data-src="http://via.placeholder.com/320x372" alt="">
-                            <figcaption>
-                                <p class="m-0 position-absolute font-weight-bold"><span class="color-main">AMEX</span>
-                                    BM</p>
-                                <a class="position-absolute bg-dark">When Goliath comes out, you should run.</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- section: our-service -->
-    <section id="our-service" class="padding">
-        <div class="sec_hedding text-left mb-30">
-            <h2 class="text-center"> <span class="color-main font-weight-normal">Our</span> Service</h2>
-            <span class="b-line m-auto bg-main"></span>
-        </div>
-        <div class="container">
-            <div class="row m-0">
-                <div class="col-lg-4  p-2">
-                    <div class="list-service shadow">
-                        <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist"
-                            aria-orientation="vertical">
-                            <a class="nav-link active text-dark" id="gestion-cmd-tab" data-toggle="pill"
-                                href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                                <img class="nav-pills-icon lazy" width="45" data-src="assets/images/icons/icon1.png"
-                                    alt="">
-                                <p>La Gestion De Vos Commande</p>
-                            </a>
-                            <a class="nav-link text-dark" id="suivi-colis-tab" data-toggle="pill" href="#suivi-colis"
-                                role="tab" aria-controls="suivi-colis" aria-selected="false">
-                                <img class="nav-pills-icon lazy" width="45" data-src="assets/images/icons/icon2.png"
-                                    alt="">
-                                <p>Suivi de colis en ligne</p>
-                            </a>
-                            <a class="nav-link text-dark" id="envoi-colis-tab" data-toggle="pill" href="#envoi-colis"
-                                role="tab" aria-controls="envoi-colis" aria-selected="false">
-                                <img class="nav-pills-icon lazy" width="45" data-src="assets/images/icons/icon3.png"
-                                    alt="">
-                                <p>Envoi De Colis</p>
-                            </a>
-                            <a class="nav-link text-dark" id="collect-fonds-tab" data-toggle="pill"
-                                href="#collect-fonds" role="tab" aria-controls="collect-fonds" aria-selected="false">
-                                <img class="nav-pills-icon lazy" width="45" data-src="assets/images/icons/icon4.png"
-                                    alt="">
-                                <p>Collecte Des Fonds</p>
-                            </a>
-
-                            <a class="nav-link text-dark" id="gestion-stock-tab" data-toggle="pill"
-                                href="#gestion-stock" role="tab" aria-controls="gestion-stock" aria-selected="false">
-                                <img class="nav-pills-icon lazy" width="45" data-src="assets/images/icons/icon5.png"
-                                    alt="">
-                                <p>La Gestion De Stock</p>
-                            </a>
-
-                            <a class="nav-link text-dark" id="relation-client-tab" data-toggle="pill"
-                                href="#relation-client" role="tab" aria-controls="relation-client"
-                                aria-selected="false">
-                                <img class="nav-pills-icon lazy" width="45" data-src="assets/images/icons/icon6.png"
-                                    alt="">
-                                <p>La Relation Clientèle</p>
-                            </a>
-
-                            <a class="nav-link text-dark" id="satisfaction-tab" data-toggle="pill" href="#satisfaction"
-                                role="tab" aria-controls="satisfaction" aria-selected="false">
-                                <img class="nav-pills-icon lazy" width="45" data-src="assets/images/icons/icon7.png"
-                                    alt="">
-                                <p>La Satisfaction</p>
-                            </a>
-
-                            <a class="nav-link text-dark" id="platform-tab" data-toggle="pill" href="#platform"
-                                role="tab" aria-controls="platform" aria-selected="false">
-                                <img class="nav-pills-icon lazy" width="45" data-src="assets/images/icons/icon8.png"
-                                    alt="">
-                                <p>La Platform</p>
-                            </a>
-
-                            <a class="nav-link text-dark" id="equipe-tab" data-toggle="pill" href="#equipe" role="tab"
-                                aria-controls="equipe" aria-selected="false">
-                                <img class="nav-pills-icon lazy" width="45" data-src="assets/images/icons/icon9.png"
-                                    alt="">
-                                <p>L'equipe</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 p-2">
-                    <div class="tab-content bg-white shadow h-100" id="v-pills-tabContent">
-                        <!-- Tab 1 -->
-                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                            aria-labelledby="gestion-cmd-tab">
-                            <div class="row m-0 p-3">
-                                <div class="col-12 p-0">
-                                    <img class="img-fluid lazy" data-src="http://via.placeholder.com/700x170" alt="">
-                                </div>
-                                <article class="col-md-8 p-0">
-                                    <h5 class="mt-2 mb-2"><b>La Gestion De Vos Commande</b></h5>
-                                    <p class="mb-3 text-jutify pr-2">
-                                        Après avoir effectuer et valider vos commandes en ligne, notre service de
-                                        ramassage se déplace chez vous dans la même journée pour récupérer vos colis,
-                                        vous assurant ainsi une livraison rapide et efficace. </p>
-                                    <button class="btn btn-light bg-main text-white">READ MORE</button>
-                                </article>
-                                <div class="col-md-4 p-0">
-                                    <ul class="list-point pl-md-4">
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Buka amin
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab 2 -->
-                        <div class="tab-pane fade" id="suivi-colis" role="tabpanel" aria-labelledby="suivi-colis-tab">
-                            <div class="row m-0 p-3">
-                                <div class="col-12 p-0">
-                                    <img class="img-fluid lazy" data-src="http://via.placeholder.com/700x170" alt="">
-                                </div>
-                                <article class="col-md-8 p-0">
-                                    <h5 class="mt-2 mb-2"><b>Suivi De Colis En Ligne</b></h5>
-                                    <p class="mb-3 text-jutify pr-2">
-                                        Notre plateforme vous offre la possibilité de tracker vos colis durant toute les
-                                        étapes de livraison et d’effectuer des modifications sur les informations
-                                        necessaires à tout moment, il vous permet de rester informer sur les statuts de
-                                        vos colis, dont vous serez notifié à chaque mise à jour .
-                                    </p>
-                                    <button class="btn btn-light bg-main text-white">READ MORE</button>
-                                </article>
-                                <div class="col-md-4 p-0">
-                                    <ul class="list-point pl-md-4">
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Buka amin
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab 3 -->
-                        <div class="tab-pane fade" id="envoi-colis" role="tabpanel" aria-labelledby="envoi-colis-tab">
-                            <div class="row m-0 p-3">
-                                <div class="col-12 p-0">
-                                    <img class="img-fluid lazy" data-src="http://via.placeholder.com/700x170" alt="">
-                                </div>
-                                <article class="col-md-8 p-0">
-                                    <h5 class="mt-2 mb-2"><b>Envoi De Colis</b></h5>
-                                    <p class="mb-3 text-jutify pr-2">
-                                        Notre principale mission est de vous garantir une livraison express à domicile
-                                        en toute sécurité et dans les brefs délais. </p>
-                                    <button class="btn btn-light bg-main text-white">READ MORE</button>
-                                </article>
-                                <div class="col-md-4 p-0">
-                                    <ul class="list-point pl-md-4">
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Buka amin
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab 4 -->
-                        <div class="tab-pane fade" id="collect-fonds" role="tabpanel"
-                            aria-labelledby="collect-fonds-tab">
-                            <div class="row m-0 p-3">
-                                <div class="col-12 p-0">
-                                    <img class="img-fluid lazy" data-src="http://via.placeholder.com/700x170" alt="">
-                                </div>
-                                <article class="col-md-8 p-0">
-                                    <h5 class="mt-2 mb-2"><b>Collecte Des Fonds</b></h5>
-                                    <p class="mb-3 text-jutify pr-2">
-                                        Lors du paiement à la livraison, notre équipe se charge de récolter vos fonds
-                                        d’une façon transparente, et vous assure leur retour dans le délai prévu .
-                                    </p>
-                                    <button class="btn btn-light bg-main text-white">READ MORE</button>
-                                </article>
-                                <div class="col-md-4 p-0">
-                                    <ul class="list-point pl-md-4">
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Buka amin
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab 5 -->
-                        <div class="tab-pane fade" id="gestion-stock" role="tabpanel"
-                            aria-labelledby="gestion-stock-tab">
-                            <div class="row m-0 p-3">
-                                <div class="col-12 p-0">
-                                    <img class="img-fluid lazy" data-src="http://via.placeholder.com/700x170" alt="">
-                                </div>
-                                <article class="col-md-8 p-0">
-                                    <h5 class="mt-2 mb-2"><b>La Gestion De Stock</b></h5>
-                                    <p class="mb-3 text-jutify pr-2">
-                                        On vous propose nos service de gestion de stock, en mettant à votre disposition
-                                        un Warehouse ( entrepôt de stockage), en plus de l’option d’emballage.
-                                    </p>
-                                    <button class="btn btn-light bg-main text-white">READ MORE</button>
-                                </article>
-                                <div class="col-md-4 p-0">
-                                    <ul class="list-point pl-md-4">
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Buka amin
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab 6 -->
-                        <div class="tab-pane fade" id="relation-client" role="tabpanel"
-                            aria-labelledby="relation-client-tab">
-                            <div class="row m-0 p-3">
-                                <div class="col-12 p-0">
-                                    <img class="img-fluid lazy" data-src="http://via.placeholder.com/700x170" alt="">
-                                </div>
-                                <article class="col-md-8 p-0">
-                                    <h5 class="mt-2 mb-2"><b>La Relation Clientèle</b></h5>
-                                    <p class="mb-3 text-jutify pr-2">
-                                        Notre équipe d’assistance reste à votre disposition à tout moment, pour vous
-                                        aider et vous communiquer plus d’information, ainsi </p>
-                                    <button class="btn btn-light bg-main text-white">READ MORE</button>
-                                </article>
-                                <div class="col-md-4 p-0">
-                                    <ul class="list-point pl-md-4">
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Buka amin
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab 7 -->
-                        <div class="tab-pane fade" id="satisfaction" role="tabpanel" aria-labelledby="satisfaction-tab">
-                            <div class="row m-0 p-3">
-                                <div class="col-12 p-0">
-                                    <img class="img-fluid lazy" data-src="http://via.placeholder.com/700x170" alt="">
-                                </div>
-                                <article class="col-md-8 p-0">
-                                    <h5 class="mt-2 mb-2"><b>La Satisfaction</b></h5>
-                                    <p class="mb-3 text-jutify pr-2">
-                                        Grâce à nos coursiers à la fois courtois et professionnels envers nos clients.
-                                        nous vous garantissons une expérience de livraison satisfaisante .
-                                    </p>
-                                    <button class="btn btn-light bg-main text-white">READ MORE</button>
-                                </article>
-                                <div class="col-md-4 p-0">
-                                    <ul class="list-point pl-md-4">
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Buka amin
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab 7 -->
-                        <div class="tab-pane fade" id="platform" role="tabpanel" aria-labelledby="platform-tab">
-                            <div class="row m-0 p-3">
-                                <div class="col-12 p-0">
-                                    <img class="img-fluid lazy" data-src="http://via.placeholder.com/700x170" alt="">
-                                </div>
-                                <article class="col-md-8 p-0">
-                                    <h5 class="mt-2 mb-2"><b>La Plateforme</b></h5>
-                                    <p class="mb-3 text-jutify pr-2">
-                                        Notre plateforme est développée par notre équipe de développement informatique,
-                                        qui assure la maintenance permanente de système, afin que vous puissiez de
-                                        profiter maximum des options de en toute aisance.
-                                </article>
-                                <div class="col-md-4 p-0">
-                                    <ul class="list-point pl-md-4">
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Buka amin
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab 8 -->
-                        <div class="tab-pane fade" id="equipe" role="tabpanel" aria-labelledby="equipe-tab">
-                            <div class="row m-0 p-3">
-                                <div class="col-12 p-0">
-                                    <img class="img-fluid lazy" data-src="http://via.placeholder.com/700x170" alt="">
-                                </div>
-                                <article class="col-md-8 p-0">
-                                    <h5 class="mt-2 mb-2"><b>L'equipe</b></h5>
-                                    <p class="mb-3 text-jutify pr-2">
-                                        Notre Famille dynamique, professionnelle et consciente de la mission de
-                                        Ekoulya.On travaille tous ensemble pour atteindre cet objectif commun,qui est de
-                                        vous assurer un service de qualité.
-                                </article>
-                                <div class="col-md-4 p-0">
-                                    <ul class="list-point pl-md-4">
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Buka amin
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Labore et dolore
-                                        </li>
-                                        <li>
-                                            <i class="ion-chevron-right"></i> Magna aliqua enim
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Section: Inscription -->
-    <section id="inscription" class="padding d-block lazy" data-src="assets/images/bg_22.jpg" >
-        <div class="overlay"></div>
-        <div class="container position-relative">
-            <div class="sec_hedding text-left mb-30">
-                <h2 class="text-center text-white"> <span class="color-main font-weight-normal">Sign</span> Up</h2>
-                <span class="b-line m-auto bg-main"></span>
-            </div>
-
-
-            <div id="modal-form" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content p-4">
-                        <div class="lds-spinner m-auto">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <ul class="list-group list-group-flush">
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <form id='form-sign-up' enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-3 mb-4">
-                        <input name="name" required type="text" class="form-control" placeholder="Full Name">
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 mb-4">
-                        <input name="email" required type="email" class="form-control" placeholder="Email">
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 mb-4">
-                        <input name="password" required type="password" class="form-control" placeholder="password">
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 mb-4">
-                        <input name="confirmPassword" required type="password" class="form-control"
-                            placeholder="confirm Password">
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-6 mb-4">
-                        <input name="telephone" required type="number" class="form-control" placeholder="Telephone">
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-6 mb-4">
-                        <input name="supportTelephone" required type="number" class="form-control"
-                            placeholder="Support Telephone">
-                    </div>
-
-                    <div class="col-12  mb-4">
-                        <input name="address" required type="text" class="form-control" placeholder="Address">
-                    </div>
-
-
-                    <div class="col-md-6 mb-4">
-                        <select name="villeRamassage" id="villeRamassage" class="form-control">
-                            <option selected disabled>Ville Ramassage</option>
-                        </select>
-                    </div>
-
-                    <div class="col-md-6 mb-4">
-                        <select name="villeInscription" id="villeInscription" class="form-control">
-                            <option selected disabled>Ville Inscription</option>
-                        </select>
-                    </div>
-
-                    <div class="col-12 col-md-6  mb-4">
-                        <input name="RIB" required type="text" class="form-control" placeholder="RIB">
-                    </div>
-                    <div class="col-12 col-md-6  mb-4">
-                        <input name="BankName" required type="text" class="form-control" placeholder="BankName">
-                    </div>
-
-                    <div class="col-12 col-md-6 mb-4">
-                        <input name="storeName" required type="text" class="form-control" placeholder="Store Name">
-                    </div>
-                    <div class="col-12 col-md-6 mb-4">
-                        <input name="shortStoreName" required type="text" class="form-control"
-                            placeholder=" short store Name">
-                    </div>
-                </div>
-
-                <input type="submit" value="Send"
-                    class="sign-up btn-block text-light btn btn-light bg-main border-none">
-            </form>
-        </div>
-    </section>
-
-    <!-- Section: Our team -->
-    <!-- <section id="our-team" class="padding d-block">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="sec_hedding text-left mb-30">
-                <h2 class="text-center "><span class="color-main font-weight-normal">Our</span> Team</h2>
-                <span class="b-line m-auto bg-main"></span>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 text-center mb-5">
-                    <div class="team_colume img-scale">
-                        <div class="team_item">
-                            <figure>
-                                <img src="http://via.placeholder.com/255x255"
-                                    class="img-fluid rounded-circle shadow shadow" alt="">
-                            </figure>
-                        </div>
-                        <div class="team_detail mt-10  ">
-                            <h6 class="font-weight-bold">Will Smith</h6>
-                            <span>Ui Developer</span>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 text-center mb-5">
-                    <div class="team_colume img-scale d-flex flex-column flex-md-column-reverse">
-
-                        <div class="team_item mt-10 flex-lg-last">
-                            <figure>
-                                <img src="http://via.placeholder.com/255x255"
-                                    class="img-fluid rounded-circle shadow shadow" alt="">
-                            </figure>
-                        </div>
-                        <div class="team_detail  ">
-                            <h6 class="font-weight-bold">Will Smith</h6>
-                            <span>Ui Developer</span>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 text-center  mb-5">
-                    <div class="team_colume img-scale">
-                        <div class="team_item">
-                            <figure>
-                                <img src="http://via.placeholder.com/255x255" class="img-fluid rounded-circle shadow"
-                                    alt="">
-                            </figure>
-                        </div>
-                        <div class="team_detail mt-10  ">
-                            <h6 class="font-weight-bold">Will Smith</h6>
-                            <span>Ui Developer</span>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 text-center  mb-5">
-                    <div class="team_colume img-scale d-flex flex-column flex-md-column-reverse">
-
-                        <div class="team_item mt-10 flex-lg-last">
-                            <figure>
-                                <img src="http://via.placeholder.com/255x255" class="img-fluid rounded-circle shadow"
-                                    alt="">
-                            </figure>
-                        </div>
-                        <div class="team_detail  ">
-                            <h6 class="font-weight-bold">Will Smith</h6>
-                            <span>Ui Developer</span>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section> -->
-
-    <section id="our-mission" class="padding d-block">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="sec_hedding text-left mb-30">
-                <h2 class="text-center "><span class="color-main font-weight-normal">Notre</span> Mission</h2>
-                <span class="b-line m-auto bg-main"></span>
-            </div>
-            <p class="text-justify text-secondary">
-                Notre mission est de vous assurer une livraison rapide et fluide de vos colis en toute sécurité, dans
-                les bref délais sur tout les grandes villes. notre plateforme développé en interne par notre équipes de
-                développement informatique qualifiée vous permet de profiter de nos multiples services (distribution,
-                ramassage, gestion des stock, tracking...), et vous facilite également le suivis en temps reel de vos
-                colis durant toute l'opération de livraison.
-            </p>
-            <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-3 text-center mb-5 ">
-                    <figure class=" bg-light shadow-2 box-img border">
-                        <img class="lazy" width="120" data-src="assets/images/missions/fast.svg" alt="img-fluid">
-                        <figcaption class="font-weight-bold text-success p-2">
-                            Rapidité
-                        </figcaption>
+                <article>
+                    <figure>
+                        <img class="img-fluid" src="https://avatarfiles.alphacoders.com/169/169432.jpg"
+                            alt="">
+                        <figcaption></figcaption>
                     </figure>
-                </div>
+                    <h3>Asta</h3>
+                </article>
 
-                <div class="col-sm-6 col-md-6 col-lg-3 text-center mb-5">
-                    <figure class=" bg-light shadow-2 box-img border">
-                        <img class="lazy" width="120" data-src="assets/images/missions/security.svg" alt="img-fluid">
-                        <figcaption class="font-weight-bold text-success p-2">
-                            Sécurité
-                        </figcaption>
+                <article>
+                    <figure>
+                        <img class="img-fluid" src="https://pbs.twimg.com/profile_images/1158838720763613185/EOfkYE-C_400x400.jpg"
+                            alt="">
+                        <figcaption></figcaption>
                     </figure>
-                </div>
+                    <h3>Julius Novachrono</h3>
+                </article>
 
-                <div class="col-sm-6 col-md-6 col-lg-3 text-center  mb-5">
-                    <figure class=" bg-light shadow-2 box-img border">
-                        <img class="lazy" width="120" data-src="assets/images/missions/tracking.svg" alt="img-fluid">
-                        <figcaption class="font-weight-bold text-success p-2">
-                            Tracking
-                        </figcaption>
+                <article>
+                    <figure>
+                        <img class="img-fluid"
+                            src="https://avatarfiles.alphacoders.com/147/147964.jpg"
+                            alt="">
+                        <figcaption></figcaption>
                     </figure>
-                </div>
-
-                <div class="col-sm-6 col-md-6 col-lg-3 text-center  mb-5">
-                    <figure class=" bg-light shadow-2 box-img border">
-                        <img class="lazy" width="120" data-src="assets/images/missions/services.svg" alt="img-fluid">
-                        <figcaption class="font-weight-bold text-success p-2">
-                            Multiple Services
-                        </figcaption>
-                    </figure>
-                </div>
+                    <h3>Zora Ideale</h3>
+                </article>
 
             </div>
-        </div>
-    </section>
-
-    <!-- Section: Our testemonial -->
-    <section id="our-testimonial" class="padding lazy" data-src="assets/images/bg_23.jpg">
-        <div class="overlay"></div>
-        <div class="container position-relative">
-
-            <!-- Pour quoi Ekoulya ? -->
-            <div class="prk-ekoulya">
-                <div class="sec_hedding text-left mb-30">
-                    <h2 class="text-center text-white"><span class="color-main font-weight-normal">Pour </span>quoi
-                        Ekoulya
-                    </h2>
-                    <span class="b-line m-auto bg-main"></span>
-                </div>
-                <div class="detail shadow mb-5">
-                    Pour le E-commerce la phase de livraison est la plus importante surtout pour les acheteurs en ligne
-                    .Pour cela , il faut avoir une gestion de livraion performante qui répond aux attente des clients.
-                    <br>
-                    Le paiement à la livraison étant le mode de paiement le plus apprécié des consommateurs Marocain.
-                    Pour mieux cerner ce processus, Ekoulya vous fournit la solution et vous proposer une distribution
-                    express et rapide, avec des livreurs opérationnel à tout moment, partout dans Maroc et tout près de
-                    vos clients, vous assurant une livraison de vos colis dans de délais reduits. Et qui se chargeront
-                    de récolter vos fond lors du paiement à la livraison.
-                </div>
-
-            </div>
-
-            <!-- Our Testemonial -->
-            <div class="sec_hedding text-left mb-30">
-                <h2 class="text-center text-white"><span class="color-main font-weight-normal">Our</span> Testimonial
-                </h2>
-                <span class="b-line m-auto bg-main"></span>
-            </div>
-            <div class="owl-carousel owl-carousel-2 owl-theme text-justify text-white">
-                <div class="item-testimonial  m-3 ">
-                    <p class="bg-main p-4 pb-5 shadow">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod [..]
-                    </p>
-                    <span class="icon-quote-left"></span>
-                    <div class="media  ml-4">
-                        <img class="mr-3 img-user lazy" data-src="http://via.placeholder.com/255x255"
-                            alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h6 class="m-0">Media heading</h6>
-                            CEO
-                        </div>
-                    </div>
-                </div>
-                <div class="item-testimonial m-3 ">
-                    <p class="bg-main p-4 pb-5 shadow">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod [..]
-                    </p>
-                    <span class="icon-quote-left"></span>
-                    <div class="media  ml-4">
-                        <img class="mr-3 img-user lazy" data-src="http://via.placeholder.com/255x255"
-                            alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h6 class="m-0">Media heading</h6>
-                            CEO
-                        </div>
-                    </div>
-                </div>
-                <div class="item-testimonial m-3 ">
-                    <p class="bg-main p-4 pb-5 shadow">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod [..]
-                    </p>
-                    <span class="icon-quote-left"></span>
-                    <div class="media  ml-4">
-                        <img class="mr-3 img-user lazy" data-src="http://via.placeholder.com/255x255"
-                            alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h6 class="m-0">Media heading</h6>
-                            CEO
-                        </div>
-                    </div>
-                </div>
-                <div class="item-testimonial m-3 ">
-                    <p class="bg-main p-4 pb-5 shadow">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod [..]
-                    </p>
-                    <span class="icon-quote-left"></span>
-                    <div class="media  ml-4">
-                        <img class="mr-3 img-user lazy" data-src="http://via.placeholder.com/255x255"
-                            alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h6 class="m-0">Media heading</h6>
-                            CEO
-                        </div>
-                    </div>
-                </div>
-                <div class="item-testimonial m-3 ">
-                    <p class="bg-main p-4 pb-5 shadow">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod [..]
-                    </p>
-                    <span class="icon-quote-left"></span>
-                    <div class="media  ml-4">
-                        <img class="mr-3 img-user lazy" data-src="http://via.placeholder.com/255x255"
-                            alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h6 class="m-0">Media heading</h6>
-                            CEO
-                        </div>
-                    </div>
-                </div>
-                <div class="item-testimonial m-3 ">
-                    <p class="bg-main p-4 pb-5 shadow">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod [..]
-                    </p>
-                    <span class="icon-quote-left"></span>
-                    <div class="media  ml-4">
-                        <img class="mr-3 img-user lazy" data-src="http://via.placeholder.com/255x255"
-                            alt="Generic placeholder image">
-                        <div class="media-body">
-                            <h6 class="m-0">Media heading</h6>
-                            CEO
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section: Our blog -->
-    <section id="our-blog" class="padding">
-        <div class="overlay"></div>
-        <div class="container position-relative">
-            <div class="sec_hedding text-left mb-30">
-                <h2 class="text-center"><span class="color-main font-weight-normal">Our</span> Blog
-                </h2>
-                <span class="b-line m-auto bg-main"></span>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="img-scale item shadow">
-                        <figure>
-                            <img class="img-fluid lazy" data-src="http://via.placeholder.com/350x250" alt="">
-                        </figure>
-                        <div class="p-3">
-                            <div class="meta-post">
-                                Feb, 24th 2018
-                            </div>
-                            <h3 class="latest__block-title"><a href="blog-single.html">How To Decorate With
-                                    Black-and-White?</a></h3>
-
-                            <div class="flat-link mt-3">
-                                <a href="#" class="font-weight-bold main-color">More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 ">
-                    <div class="img-scale item shadow">
-                        <figure>
-                            <img class="img-fluid lazy" data-src="http://via.placeholder.com/350x250" alt="">
-                        </figure>
-                        <div class="p-3">
-                            <div class="meta-post">
-                                Feb, 24th 2018
-                            </div>
-                            <h3 class="latest__block-title"><a href="blog-single.html">How To Decorate With
-                                    Black-and-White?</a></h3>
-
-                            <div class="flat-link mt-3">
-                                <a href="#" class="font-weight-bold main-color">More <i
-                                        class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 ">
-                    <div class="img-scale item shadow">
-                        <figure>
-                            <img class="img-fluid lazy" data-src="http://via.placeholder.com/350x250" alt="">
-                        </figure>
-                        <div class="p-3">
-                            <div class="meta-post">
-                                Feb, 24th 2018
-                            </div>
-                            <h3 class="latest__block-title"><a href="blog-single.html">How To Decorate With
-                                    Black-and-White?</a></h3>
-
-                            <div class="flat-link mt-3">
-                                <a href="#" class="font-weight-bold main-color">More <i
-                                        class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section: info-ekoulya -->
-    <section id="info_ekoulya" class="p-4">
-        <div class="container">
-            <div class="row m-0">
-                <div class="col-md-4">
-                    <div class="media mb-3">
-                        <span class="icon-phone icon"></span>
-                        <div class="media-body">
-                            <h6 class="m-0 font-weight-bold">0(000) 000 000</h6>
-                            <span>Monday-Friday, 8am-7pm</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="media mb-3">
-                        <span class="icon-mail icon"></span>
-                        <div class="media-body">
-                            <h6 class="m-0 font-weight-bold">business@support.com</h6>
-                            <span>Monday-Friday, 8am-7pm</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="media mb-3">
-                        <span class="icon-megaphone icon"></span>
-                        <div class="media-body">
-                            <h6 class="m-0 font-weight-bold">Request a quote</h6>
-                            <span>Get all the infomation</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- Footer -->
-    <footer class="lazy" data-src="assets/images/bg_24.jpg">
-        <div class="overlay"></div>
-        <div class="container position-relative">
-            <div class="row text-white">
-                <div class="col-lg-3 mb-3">
-                    <article class="footer_box__block">
-                        <h4>About Us</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, architecto, asperiores.
-                            Recusandae ea a culpa eligendi, harum amet cumque quod.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid sequi, fuga rem aperiam
-                            expedita ipsum.
-                        </p>
-                    </article>
-                </div>
-                <div class="col-lg-3 mb-3">
-                    <article class="footer_box__block">
-                        <h4>Latest Blog Post</h4>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a href="#">Start your own agency</a>
-                            </li>
-                            <li>
-                                <a href="#">How to cool down quality</a>
-                            </li>
-                            <li>
-                                <a href="#">Make something awesome</a>
-                            </li>
-                            <li>
-                                <a href="#">Plane your summer vacation</a>
-                            </li>
-                            <li>
-                                <a href="#">There are sunlight to enjoy</a>
-                            </li>
-                        </ul>
-                    </article>
-                </div>
-                <div class="col-lg-3 mb-3">
-                    <article class="footer_box__block">
-                        <h4>Our Project</h4>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a href="#">Go get an ice-cream</a>
-                            </li>
-                            <li>
-                                <a href="#">Become the best version</a>
-                            </li>
-                            <li>
-                                <a href="#">Eat, Sleep and have fun</a>
-                            </li>
-                            <li>
-                                <a href="#">Start the journy to the top</a>
-                            </li>
-                            <li>
-                                <a href="#">Can you do this for us?</a>
-                            </li>
-                        </ul>
-                    </article>
-                </div>
-                <div class="col-lg-3 mb-3">
-                    <article class="footer_box__block address-box">
-                        <h4>Contact info</h4>
-                        <ul class="last-list">
-                            <li>
-                                <p>
-                                    <i class="icon-phone"></i>
-                                    Call Us +56 (0) 012 345 6789
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <i class="icon-mail"></i>
-                                    <a class="text-white" href="mailto:info@example.com">business@support.com</a>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <i class="icon-location"></i>
-                                    123 Main Street, St. NW Ste, 1 Washington, DC,USA.
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <i class="icon-clock"></i>
-                                    Monday-Firday, 9am-6pm;
-                                    <br>
-                                    Sunday Closed
-                                </p>
-                            </li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-            <div class="copyriight_block">
-                <div class="row mt-5">
-                    <div class="col-sm-6">
-                        <a href="#" class="footer__block-logo"><img class="lazy"
-                                data-src="assets/images/footer_logo.png" alt=""></a>
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        <p class="text-white">
-                            All Rights Reserved
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Load Script -->
-    <!-- <script src="assets/js/jquery-3.4.1.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/axios.min.js"></script> -->
-    <script src="assets/js/main.js"></script>
-    <script src="http://localhost:35729/livereload.js?snipver=1"></script>
+        </section>
+    </main>
     <script>
-        $(function () {
-            $('.lazy').Lazy({
-                effect: "fadeIn",
-                effectTime: 1000,
-                threshold: 0
-            });
-        });
+        document.body.addEventListener('click', function () {
+            document.getElementById('drawer').classList.remove('open');
+            document.getElementsByClassName('hamburger')[0].classList.remove('toggle');
+        })
+
+        document.getElementsByClassName('hamburger')[0].addEventListener('click', function (e) {
+            e.stopPropagation();
+            this.classList.toggle('toggle');
+            document.getElementById('drawer').classList.toggle('open');
+        })
     </script>
 </body>
 
